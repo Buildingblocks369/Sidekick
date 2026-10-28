@@ -30,8 +30,13 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
+# env files: real secrets live in .env.local and are NEVER committed.
+# Only the placeholder template .env.example is allowed in.
 .env*
+!.env.example
+
+# Sidekick local spend ledger (runtime data, not source code)
+/.sidekick-data/
 
 # vercel
 .vercel

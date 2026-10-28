@@ -1,12 +1,15 @@
 {
-  "name": "sidekick-tmp",
+  "name": "sidekick",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "typecheck": "next typegen && tsc --noEmit",
+    "test:api": "node scripts/test-api.mjs",
+    "spend": "node scripts/show-spend.mjs"
   },
   "dependencies": {
     "next": "16.4.3",

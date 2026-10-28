@@ -1,26 +1,55 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/*
+  Sidekick colors: warm cream background, deep teal accent, soft ink text.
+  Contrast was chosen to stay readable (text on cream and white is at least WCAG AA).
+*/
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-cream: #fbf8f3;
+  --color-paper: #ffffff;
+  --color-ink: #2b2a28;
+  --color-muted: #615c55;
+  --color-line: #e3dccf;
+  --color-accent: #1f6f6b;
+  --color-accent-dark: #17504d;
+  --color-accent-soft: #e3f0ee;
+  --color-demo-bg: #fff1d6;
+  --color-demo-ink: #6f4300;
+  --color-danger-bg: #fdecea;
+  --color-danger-ink: #8a1f17;
   --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-serif: Georgia, "Times New Roman", serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  background: var(--color-cream);
+  color: var(--color-ink);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+/* A clear outline for keyboard users on every interactive element. */
+:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Respect people who ask their device for less motion. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Native <dialog> styling (we use it for pop-ups because it handles focus and Esc for us). */
+dialog::backdrop {
+  background: rgb(43 42 40 / 0.45);
 }
